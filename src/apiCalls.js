@@ -1,19 +1,8 @@
 //API Key: g0iIp2fZh3Hy7ztGZuCLlgPtuR8ysniZ
-// article search /articlesearch.json?q={query}&fq={filter}
 
-const fetchTopTen = () => {
-return fetch("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=g0iIp2fZh3Hy7ztGZuCLlgPtuR8ysniZ")
-    .then((response) => {
-    if (response.ok) {
-        return response.json()
-    } else {
-        throw Error(response.status.toString())
-    }
-})
-}
-
-const fetchMostShared = () => {
-return fetch("https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?api-key=g0iIp2fZh3Hy7ztGZuCLlgPtuR8ysniZ")
+const fetchTopStories = () => {
+// return fetch(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=g0iIp2fZh3Hy7ztGZuCLlgPtuR8ysniZ`)
+return fetch("https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=g0iIp2fZh3Hy7ztGZuCLlgPtuR8ysniZ")
     .then((response) => {
     if (response.ok) {
         return response.json()
@@ -26,4 +15,5 @@ return fetch("https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?
 
 
 
-export { fetchTopTen, fetchMostShared }
+
+export { fetchTopStories }

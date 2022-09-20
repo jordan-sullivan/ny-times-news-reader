@@ -1,13 +1,14 @@
 import './App.css';
 import { useEffect, useState } from "react";
-import { fetchTopTen, fetchMostShared } from "../../apiCalls"
+import { fetchTopStories } from "../../apiCalls"
 
 const App = () => {
   const [stories, setStories] = useState([])
   const [error, setError] = useState(false)
+  const [selectedArticle, setSelectedArticle] = useState({})
 
   useEffect(() => {
-    fetchMostShared()
+    fetchTopStories()
       .then((data) => {
         console.log("DATA", data.results)
         setStories(data.results)
@@ -19,7 +20,6 @@ const App = () => {
 
   return (
     <div className="App">
-      NY Times Reader
     </div>
   );
 }
