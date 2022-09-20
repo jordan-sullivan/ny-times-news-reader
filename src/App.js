@@ -1,7 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from "react";
+import { fetchTopTen, fetchMostShared } from "./apiCalls"
 
-function App() {
+const App = () => {
+  const [stories, setStories] = useState([])
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    fetchMostShared()
+      .then((data) => {
+        console.log("DATA", data.results)
+        setStories(data.results)
+      })
+      .catch(() => {
+        setError(true);
+      });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
