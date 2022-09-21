@@ -1,9 +1,18 @@
 import './App.css';
+import logo from '../../logo.png';
 import { useEffect, useState } from "react";
 import { fetchTopStories } from "../../apiCalls"
+import Loading from '../Loading/Loading';
+import Nav  from "../Nav/Nav"
+import Article from "../Article/Article"
+import ArticleContainer from '../ArticleContainer/ArticleContainer';
+import Stories from '../Stories/Stories';
+import StoriesContainer from '../StoriesContainer/StoriesContainer';
+import { Route, Switch} from 'react-router-dom';
 
 const App = () => {
   const [stories, setStories] = useState([])
+  const [sectionTag, setSectionTag] = useState("arts");
   const [currentArticle, setCurrentArticle] = useState({})
   const [error, setError] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -21,26 +30,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <Nav setArticles={setArticles} setSectionTag={setSectionTag} setIsLoading={setIsLoading} />
+      <Nav setStories={setStories} setSectionTag={setSectionTag} setIsLoading={setIsLoading} />
       <Switch>
         <Route
           exact path="/nyt-reader/"
           render={() =>
             <main>
-              {isLoading ? <Loading /> : <Articles stories={stories} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} />}
+              {isLoading ? <Loading /> : <Article stories={stories} currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} />}
             </main>
           }
-        />
-
-        <Route
-          exact path="/nyt-reader/:article"
-          render={({ match }) => {
-            const article = parseInt(match.params.article)
-            return (
-              <div>
-                <ArticleDetail currentArticle={currentArticle} />
-              </div>)
-          }}
         />
 
         <Route
@@ -48,7 +46,7 @@ const App = () => {
           render={() => <img src={logo} className="App-logo" alt="logo" />
           }
         />
-        
+
       </Switch>
     </div>
   );

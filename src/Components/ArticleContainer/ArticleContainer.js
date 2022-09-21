@@ -1,5 +1,6 @@
 import React from "react";
-import './ArticleContainer.css'
+import './articleContainer.css'
+import Article from "../Article/Article";
 
 const ArticleContainer = ({ stories, selectedArticle, setCurrentArticle }) => {
 
