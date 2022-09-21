@@ -1,9 +1,10 @@
 import React from "react";
+import ArticleContainer from "../ArticleContainer/ArticleContainer";
 
-const Article = () => {
+const Article = ({storyCard}) => {
 
     return(
-        <div>Article</div>
+        <div>{storyCard}</div>
     )
 }
 

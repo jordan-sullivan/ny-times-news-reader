@@ -15,18 +15,24 @@ const App = () => {
   const [sectionTag, setSectionTag] = useState("arts");
   const [currentArticle, setCurrentArticle] = useState({})
   const [error, setError] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    fetchTopStories()
+  const handleFetch = () => {
+    fetchTopStories(sectionTag)
       .then((data) => {
         console.log("DATA", data.results)
         setStories(data.results)
+        setIsLoading(false)
       })
       .catch(() => {
         setError(true);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+  handleFetch()
+  }, [setSectionTag])
+
 
   return (
     <div className="App">
