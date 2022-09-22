@@ -3,18 +3,21 @@ import './articleContainer.css'
 import Article from "../Article/Article";
 import { Link } from "react-router-dom";
 
-const ArticleContainer = ({ stories, selectedArticle, setCurrentArticle }) => {
+const ArticleContainer = ({ articles }) => {
 
-    const storyCard = stories.map((story) => {
-        let keyId = story.short_url.slice(-7)
+    const articleCards = articles.map((article, index) => {
+        let keyId = article.short_url.slice(-7)
         return <Article
-            story={story} key={keyId} id={keyId} setCurrentArticle={setCurrentArticle} />
+            article={article.title} 
+            key={index} 
+            abstract={article.abstract} 
+            multimedia={article.multimedia} />
     })
 
     return (
         <Link to="nty-reader/">
             <div className="articleContainer">
-                {storyCard}
+                {articleCards}
             </div>
         </Link>
     )

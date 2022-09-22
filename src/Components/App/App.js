@@ -6,7 +6,7 @@ import Loading from '../Loading/Loading';
 import Nav from "../Nav/Nav"
 import Article from "../Article/Article"
 import { Route, Switch} from 'react-router-dom';
-import Articles from './Articles';
+import ArticleContainer from './ArticleContainer';
 import Filter from './Filter';
 
 const App = () => {
@@ -40,7 +40,7 @@ const App = () => {
         section={section}
         setSection={setSectionTag}
       />
-      <Articles
+      <ArticleContainer
         articles={articles}
       />
     </div>
