@@ -1,21 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./nav.css"
 
 const Nav = () => {
 
-    return(
-        <div className="navContainer">
-            <h1>New York Times</h1>
-           <div class="dropdown">
-            <button>News Topics</button>
-                <div class="dropdown-content">
-                <p>Arts</p>
-                <p>Economy</p>
-                <p>Environment</p>
-                </div>
-</div>
+    return (
+        <div className='nav-container'>
+            <h1>NY TIMES NEWS READER</h1>
+            <div className='home-btn-container'>
+                <Link to='/'>
+                    <button className='home-btn'>HOME</button>
+                </Link>
+            </div>
         </div>
     )
 }
 
-export default Nav
+export default Nav;
