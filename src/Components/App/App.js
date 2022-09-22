@@ -1,27 +1,58 @@
 import './App.css';
+import logo from '../../logo.png';
 import { useEffect, useState } from "react";
 import { fetchTopStories } from "../../apiCalls"
+import Loading from '../Loading/Loading';
+import Nav from "../Nav/Nav"
+import { Route, Switch} from 'react-router-dom';
+import ArticleContainer from '../ArticleContainer/ArticleContainer';
+import Filter from '../Filter/Filter';
+import Stories from '../Stories/Stories';
+import Error from '../Error/Error';
 
 const App = () => {
-  const [stories, setStories] = useState([])
+  const [articles, setArticles] = useState([])
+  const [section, setSection] = useState("arts");
   const [error, setError] = useState(false)
-  const [selectedArticle, setSelectedArticle] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    fetchTopStories()
+  const handleFetch = () => {
+    fetchTopStories(section)
       .then((data) => {
         console.log("DATA", data.results)
-        setStories(data.results)
+        setArticles(data.results)
+        setIsLoading(false)
       })
       .catch(() => {
         setError(true);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+  handleFetch()
+  }, [section])
+
 
   return (
-    <div className="App">
+    <div>
+      <Nav /> 
+      {error ? <Error /> : 
+      <Switch>
+        <Route exact path='/'> 
+      <Filter 
+        section={section}
+        setSection={setSection}
+      />
+      <ArticleContainer
+        articles={articles}
+      />
+      </Route>
+        <Route exact path='/article/:id' render={({ match }) => <Stories id={ match.params.id } articles={articles}/>}>
+        </Route>
+      </Switch>
+      }
     </div>
-  );
+  )
 }
 
 export default App;
