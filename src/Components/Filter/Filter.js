@@ -3,14 +3,14 @@ import './Filter.css'
 
 const Filter = ({ section, setSection }) => {
 
-    const sections = ['arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'magazine', 'movies', 'nyregion', 'obituaries', 'opinion', 'politics', 'realestate','science', 'sports', 'sundayreview', 'technology', 'theater', 't-magazine', 'travel', 'upshot', 'us', 'world']
+    const sections = ['arts', 'automobiles', 'books', 'business', 'fashion', 'food', 'health', 'home', 'insider', 'movies', 'opinion', 'politics', 'realestate','science', 'sports', 'technology', 'theater', 'travel', 'upshot', 'us', 'world']
     
     const buttons = sections.map((section, index) => {
-        return <button key={index} onClick={() => setSection(section)}>{section}</button>
+        return <button  className='filter-btn' key={index} onClick={() => setSection(section)}>{section}</button>
     })
 
     return (
-        <section>{buttons}</section>
+        <section className="buttons-box">{buttons}</section>
     )
 }
 

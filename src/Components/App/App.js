@@ -40,7 +40,7 @@ const App = () => {
       <Switch>
 
         <Route
-          exact path="/"
+          exact path="/loading"
           render={() =>
             <main>
               {isLoading ? <Loading /> : <ArticleContainer articles={articles} />}
