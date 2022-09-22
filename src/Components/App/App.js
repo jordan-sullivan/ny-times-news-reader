@@ -38,6 +38,15 @@ const App = () => {
       <Nav /> 
       {error ? <Error /> : 
       <Switch>
+
+        <Route
+          exact path="/"
+          render={() =>
+            <main>
+              {isLoading ? <Loading /> : <ArticleContainer articles={articles} />}
+            </main>
+          }
+        />
         <Route exact path='/'> 
       <Filter 
         section={section}
