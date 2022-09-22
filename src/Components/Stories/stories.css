@@ -1,0 +1,17 @@
+.article-details-text {
+    font-family: 'Lora', serif;
+}
+
+.article-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article-link-btn {
+    border-color: black;
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+    font-family: 'Lora', serif;
+}

@@ -8,11 +8,11 @@ import { Route, Switch} from 'react-router-dom';
 import ArticleContainer from '../ArticleContainer/ArticleContainer';
 import Filter from '../Filter/Filter';
 import Stories from '../Stories/Stories';
+import Error from '../Error/Error';
 
 const App = () => {
   const [articles, setArticles] = useState([])
   const [section, setSection] = useState("arts");
-  const [currentArticle, setCurrentArticle] = useState({})
   const [error, setError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -30,7 +30,7 @@ const App = () => {
 
   useEffect(() => {
   handleFetch()
-  }, [setSection])
+  }, [section])
 
 
   return (

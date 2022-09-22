@@ -5,22 +5,22 @@ import { Link } from "react-router-dom";
 
 const ArticleContainer = ({ articles }) => {
 
+    console.log(articles)
     const articleCards = articles.map((article, index) => {
-        return <Article
-            article={article.title} 
-            key={index} 
-            abstract={article.abstract} 
-            byLine={article.byline}
-            multimedia={article.multimedia} />
+        return (
+            <Link to={`/article/${index}`} style={{textDecoration: 'none', color: 'black', fontFamily: 'Lora'}} className='article-card' key={index}>
+                <Article
+                    title={article.title}
+                    abstract={article.abstract}
+                    multimedia={article.multimedia}
+                />
+            </Link>
+        )
     })
 
-    return (
-        <Link to="nty-reader/">
-            <div className="articleContainer">
-                {articleCards}
-            </div>
-        </Link>
-    )
+        return (
+            <div className='articles-container'>{articleCards}</div>
+        )
 }
 
 export default ArticleContainer

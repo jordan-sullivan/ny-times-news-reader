@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import "../stories.css"
+import React from 'react';
+import "./stories.css"
 
 const Stories = ({articles, id}) => {
 
@@ -9,9 +9,9 @@ const Stories = ({articles, id}) => {
     })
     console.log("selected article", selectedArticle)
 
-    let selectedArticleImage = selectedArticle.multimedia ? <img src={selectedArticle.multimedia[1].url} 
-        alt={selectedArticle.multimedia[1].caption} className='article-img'/> : null
-    return(
+    let selectedArticleImage = selectedArticle.multimedia ? <img src={selectedArticle.multimedia[1].url} alt={selectedArticle.multimedia[1].caption} className='article-img'/> : null
+
+    return (
         <div className='article-details-container'>
             <h2 className='article-details-text'>{selectedArticle.title}</h2>
             <p className='article-details-text'>{selectedArticle.abstract}</p>
