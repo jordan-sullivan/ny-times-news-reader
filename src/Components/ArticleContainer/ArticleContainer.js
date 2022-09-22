@@ -1,6 +1,7 @@
 import React from "react";
 import './articleContainer.css'
 import Article from "../Article/Article";
+import { Link } from "react-router-dom";
 
 const ArticleContainer = ({ stories, selectedArticle, setCurrentArticle }) => {
 
@@ -11,9 +12,11 @@ const ArticleContainer = ({ stories, selectedArticle, setCurrentArticle }) => {
     })
 
     return (
-        <div className="articleContainer">
-            {storyCard}
-        </div>
+        <Link to="nty-reader/">
+            <div className="articleContainer">
+                {storyCard}
+            </div>
+        </Link>
     )
 }
 
