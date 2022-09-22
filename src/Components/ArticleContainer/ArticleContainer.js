@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 const ArticleContainer = ({ articles }) => {
 
     const articleCards = articles.map((article, index) => {
-        let keyId = article.short_url.slice(-7)
         return <Article
             article={article.title} 
             key={index} 
             abstract={article.abstract} 
+            byLine={article.byline}
             multimedia={article.multimedia} />
     })
 

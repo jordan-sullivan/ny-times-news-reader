@@ -4,23 +4,23 @@ import { useEffect, useState } from "react";
 import { fetchTopStories } from "../../apiCalls"
 import Loading from '../Loading/Loading';
 import Nav from "../Nav/Nav"
-import Article from "../Article/Article"
 import { Route, Switch} from 'react-router-dom';
-import ArticleContainer from './ArticleContainer';
-import Filter from './Filter';
+import ArticleContainer from '../ArticleContainer/ArticleContainer';
+import Filter from '../Filter/Filter';
+import Stories from '../Stories/Stories';
 
 const App = () => {
   const [articles, setArticles] = useState([])
-  const [sectionTag, setSectionTag] = useState("arts");
+  const [section, setSection] = useState("arts");
   const [currentArticle, setCurrentArticle] = useState({})
   const [error, setError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   const handleFetch = () => {
-    fetchTopStories(sectionTag)
+    fetchTopStories(section)
       .then((data) => {
         console.log("DATA", data.results)
-        setStories(data.results)
+        setArticles(data.results)
         setIsLoading(false)
       })
       .catch(() => {
@@ -30,19 +30,27 @@ const App = () => {
 
   useEffect(() => {
   handleFetch()
-  }, [setSectionTag])
+  }, [setSection])
 
 
   return (
     <div>
       <Nav /> 
+      {error ? <Error /> : 
+      <Switch>
+        <Route exact path='/'> 
       <Filter 
         section={section}
-        setSection={setSectionTag}
+        setSection={setSection}
       />
       <ArticleContainer
         articles={articles}
       />
+      </Route>
+        <Route exact path='/article/:id' render={({ match }) => <Stories id={ match.params.id } articles={articles}/>}>
+        </Route>
+      </Switch>
+      }
     </div>
   )
 }
