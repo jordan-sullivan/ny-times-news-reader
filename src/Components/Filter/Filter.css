@@ -7,7 +7,8 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-
+    text-align: center;
+    align-content: center;
 }
 
 .filter-btn {
@@ -15,10 +16,10 @@
     background-color: black;
     color: white;
     border:none;
-    padding: 5px;
+    padding: 6px;
     margin: 1px;
     font-family: 'Lora', serif;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .filter-btn:hover {

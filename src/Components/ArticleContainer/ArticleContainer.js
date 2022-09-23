@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const ArticleContainer = ({ articles }) => {
 
-    console.log(articles)
     const articleCards = articles.map((article, index) => {
         return (
             <Link to={`/article/${index}`} style={{textDecoration: 'none', color: 'black', fontFamily: 'Lora'}} 
