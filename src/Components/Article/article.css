@@ -1,0 +1,31 @@
+.holder{
+display: flex;
+justify-content: center;
+align-items: center;
+align-content: center;
+
+}
+.art-holder{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+align-content: center;
+text-align: center;
+padding: 10px;
+}
+
+.article-img{
+height: 300px;
+width: 450px;
+}
+
+article {
+height: 500px;
+width: 500px;
+}
+
+.article-card-text {
+    font-family: 'Lora', serif;
+    margin-bottom:20px;
+}

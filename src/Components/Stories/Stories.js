@@ -7,7 +7,6 @@ const Stories = ({articles, id}) => {
     const selectedArticle = articles.find((article, index) => {
         return index === idNum
     })
-    console.log("selected article", selectedArticle)
 
     let selectedArticleImage = selectedArticle.multimedia ? <img src={selectedArticle.multimedia[1].url} alt={selectedArticle.multimedia[1].caption} className='article-img'/> : null
 
@@ -17,6 +16,7 @@ const Stories = ({articles, id}) => {
             <p className='article-details-text'>{selectedArticle.abstract}</p>
             {selectedArticleImage}
             <p className='article-details-text'>{selectedArticle.byline}</p>
+            <p className="article-details-text">{selectedArticle.des_facet}</p>
             <button className='article-link-btn'>
                 <a style={{textDecoration: 'none', color: 'white'}} href={selectedArticle.url} target="_blank">Read More</a>
             </button>

@@ -1,5 +1,4 @@
 import './App.css';
-import logo from '../../logo.png';
 import { useEffect, useState } from "react";
 import { fetchTopStories } from "../../apiCalls"
 import Loading from '../Loading/Loading';
@@ -19,7 +18,6 @@ const App = () => {
   const handleFetch = () => {
     fetchTopStories(section)
       .then((data) => {
-        console.log("DATA", data.results)
         setArticles(data.results)
         setIsLoading(false)
       })
@@ -38,6 +36,14 @@ const App = () => {
       <Nav /> 
       {error ? <Error /> : 
       <Switch>
+        <Route
+          exact path="/loading"
+          render={() =>
+            <main>
+              {isLoading ? <Loading /> : <ArticleContainer articles={articles} />}
+            </main>
+          }
+        />
         <Route exact path='/'> 
       <Filter 
         section={section}
